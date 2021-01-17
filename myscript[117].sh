@@ -16,3 +16,5 @@ sudo gedit /etc/pam.d/common-password #at the end of line 25 add remember=5 minl
 sudo gedit /etc/pam.d/common-auth #make a new line at the end and write auth required pam_tally2.so deny=5 onerr=fail unlock_time=1800
 sudo gedit /etc/login.defs #starting at line 160, change values to 90, 10 and 7
 sudo gedit /etc/ssh/sshd_config #PermitRootLogin no
+sudo sed -i '160s/.*/PASS_MAX_DAYS	35/' /etc/login.defs
+sudo sed -i '161s/.*/PASS_MIN_DAYS	15/' /etc/login.defs
